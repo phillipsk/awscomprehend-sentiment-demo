@@ -5,9 +5,12 @@ import boto3
 
 class ComprehendApi:
 
+    def __init__(self, client=None):
+        self.client = client or boto3.client('comprehend')
+
     def get_sentiment_singledoc(self, text: str, language_code: str = 'es') -> tuple:
-        client = boto3.client('comprehend')
-        response = client.detect_sentiment(Text=text, LanguageCode=language_code)
+
+        response = self.client.detect_sentiment(Text=text, LanguageCode=language_code)
 
         sentiment = response["Sentiment"]
         confidence_score = response["SentimentScore"][sentiment.title()]
@@ -15,7 +18,6 @@ class ComprehendApi:
         return sentiment, confidence_score
 
     def get_sentiment_batch(self, list_of_doc: list, language_code: str = 'es') -> list:
-        client = boto3.client('comprehend')
 
         # Response looks like this for batch sentiment
         # {
@@ -39,7 +41,7 @@ class ComprehendApi:
         #         },
         #     ]
         # }
-        response = client.batch_detect_sentiment(TextList=list_of_doc, LanguageCode=language_code)
+        response = self.client.batch_detect_sentiment(TextList=list_of_doc, LanguageCode=language_code)
 
         # Error handling
         error_list = response['ErrorList']
@@ -57,5 +59,3 @@ class ComprehendApi:
             result.append((text, sentiment, confidence_score))
 
         return result
-
-
