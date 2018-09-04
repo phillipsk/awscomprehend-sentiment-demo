@@ -40,7 +40,7 @@ Runs a sample demo
         with open(input, "r") as f:
             for line in f:
                 input_list.append(line.strip('\n'))
-        result = api.get_sentiment_batch(input_list)
+        result = api.get_sentiment_batch_bulk(input_list)
 
 
 

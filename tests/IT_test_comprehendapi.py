@@ -16,14 +16,14 @@ class ITTestComprehendapi(TestCase):
         self.assertEqual(actual_sentiment.lower(), expected_sentiment)
         self.assertGreater(confidence_score, 0)
 
-    def test_get_sentiment_batch(self):
+    def test_get_sentiment_batch_bulk(self):
         # Arrange
         sut = ComprehendApi()
         data = ["This is bad"
             , "This is good"]
 
         # Act
-        actual = sut.get_sentiment_batch(data)
+        actual = sut.get_sentiment_batch_bulk(data)
 
         # Assert
         self.assertEqual(len(data), len(actual))

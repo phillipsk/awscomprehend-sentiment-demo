@@ -20,13 +20,13 @@ class TestComprehendapi(TestCase):
 
         # Act
 
-        actual_sentiment, confidence_score = sut.get_sentiment_singledoc(data, 'es')
+        actual_sentiment, confidence_score = sut.get_sentiment_singledoc(data, 'en')
 
         # Assert
         self.assertEqual(actual_sentiment.lower(), expected_sentiment)
         self.assertEqual(confidence_score, 1.0)
 
-    def test_get_sentiment_batch(self):
+    def test_get_sentiment_batch_bulk(self):
         # Arrange
         data = ["This is bad"
             , "This is good"]
@@ -66,7 +66,7 @@ class TestComprehendapi(TestCase):
         sut = ComprehendApi(mock_client)
 
         # Act
-        actual = sut.get_sentiment_batch(data)
+        actual = sut.get_sentiment_batch_bulk(data)
 
         # Assert
         self.assertEqual(len(data), len(actual))
