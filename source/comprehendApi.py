@@ -35,6 +35,7 @@ Obtains sentiment for a batch of documents
             error_msg = '\n'.join(['{} {}'.format(e['Index'], e['ErrorMessgae']) for e in error_list])
             raise RuntimeError(error_msg)
 
+        # Collect results
         result = []
         for r in response['ResultList']:
             input_index = r['Index']
