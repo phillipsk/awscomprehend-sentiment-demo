@@ -1,8 +1,6 @@
 from unittest import TestCase
 from unittest.mock import MagicMock
-
 from comprehendApi import ComprehendApi
-from unittest.mock import patch
 
 
 class TestComprehendapi(TestCase):

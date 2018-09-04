@@ -27,4 +27,3 @@ class ITTestComprehendapi(TestCase):
 
         # Assert
         self.assertEqual(len(data), len(actual))
-
