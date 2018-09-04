@@ -1,3 +1,5 @@
+import argparse
+
 import boto3
 
 
@@ -5,7 +7,6 @@ class ComprehendApi:
 
     def get_sentiment_singledoc(self, text: str, language_code: str = 'es') -> tuple:
         client = boto3.client('comprehend')
-
         response = client.detect_sentiment(Text=text, LanguageCode=language_code)
 
         sentiment = response["Sentiment"]
@@ -56,3 +57,5 @@ class ComprehendApi:
             result.append((text, sentiment, confidence_score))
 
         return result
+
+

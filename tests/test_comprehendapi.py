@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from source.comprehendApi import ComprehendApi
+from comprehendApi import ComprehendApi
 
 
 class TestComprehendapi(TestCase):
