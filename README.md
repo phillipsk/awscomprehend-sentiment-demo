@@ -1,4 +1,4 @@
-# awscomprehend-sentiment-demo
+# Aws comprehend sentimentanalysis demo
 Demos Sentiment analysis using comprehend batch, document and asynchronous mode
 
 ## Prerequisites
