@@ -21,7 +21,7 @@ phases:
       - echo creating package
       - mkdir buildoutput
       - pip install -r source/requirements.txt  -t custom_chainer
-      - cd source && zip -r ../buildoutput/sentimentanalysis_chainer.zip . && cd ..
+      - cd source && zip -r ../buildoutput/comprehend_sentiment_demo.zip . && cd ..
 
 
 artifacts:
