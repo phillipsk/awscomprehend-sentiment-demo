@@ -19,7 +19,6 @@ class ComprehendApi:
 
     def get_sentiment_batch(self, list_of_doc: list, language_code: str = 'es') -> list:
 
-
         response = self.client.batch_detect_sentiment(TextList=list_of_doc, LanguageCode=language_code)
 
         # Error handling
