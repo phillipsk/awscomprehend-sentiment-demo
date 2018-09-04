@@ -14,7 +14,7 @@ def write_result(result, outfile=None):
         return
 
     with open(outfile, "w") as f:
-        csv_writer = csv.writer(f, delimiter=",", quotechar='"')
+        csv_writer = csv.writer(f, delimiter="|", quotechar='"')
         for l in result:
             csv_writer.writerow(l)
 
@@ -39,7 +39,7 @@ Runs a sample demo
         # read file
         with open(input, "r") as f:
             for line in f:
-                input_list.append(line)
+                input_list.append(line.strip('\n'))
         result = api.get_sentiment_batch(input_list)
 
 
