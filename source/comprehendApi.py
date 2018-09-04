@@ -7,7 +7,12 @@ class ComprehendApi:
         self.client = client or boto3.client('comprehend')
 
     def get_sentiment_singledoc(self, text: str, language_code: str = 'es') -> tuple:
-
+        """
+Obtains sentiment for a single text
+        :param text: The text
+        :param language_code: Langauge code
+        :return: tuple (sentiment, confidencescore)
+        """
         response = self.client.detect_sentiment(Text=text, LanguageCode=language_code)
 
         sentiment = response["Sentiment"]
@@ -16,7 +21,12 @@ class ComprehendApi:
         return sentiment, confidence_score
 
     def get_sentiment_batch(self, list_of_doc: list, language_code: str = 'es') -> list:
-
+        """
+Obtains sentiment for a batch of documents
+        :param list_of_doc: list of documents
+        :param language_code: The language code
+        :return: a list of sentiments
+        """
         response = self.client.batch_detect_sentiment(TextList=list_of_doc, LanguageCode=language_code)
 
         # Error handling
