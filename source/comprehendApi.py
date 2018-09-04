@@ -32,15 +32,16 @@ Obtains sentiment for a batch of documents. Comprehend api only accepts 25  docu
         :return: a list of sentiments
         """
         pool = ThreadPool(max_threads)
-        result = pool.starmap(self.get_sentiment_batch, product(self._chunks(list_of_doc, chunk_size=20), [language_code]))
+        result = pool.starmap(self.get_sentiment_batch,
+                              product(self._chunks(list_of_doc, chunk_size=20), [language_code]))
         pool.close()
         pool.join()
         result = reduce(lambda x, y: x + y, result)
         return result
 
     def get_sentiment_batch(self, list_of_doc, language_code):
-
-        assert  len(list_of_doc) <=25
+        # Comprehend api only accepts 25  documents at time
+        assert len(list_of_doc) <= 25
 
         response = self.client.batch_detect_sentiment(TextList=list_of_doc, LanguageCode=language_code)
         # Error handling
