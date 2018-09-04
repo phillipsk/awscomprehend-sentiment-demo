@@ -1,0 +1,30 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - apt-get update
+      - apt-get install zip
+  pre_build:
+    commands:
+      - pip install pytest==3.6.3
+      - pip install pyflakes==2.0.0
+  build:
+    commands:
+      - pip install -r source/requirements.txt
+
+      - export PYTHONPATH=./source
+      - pytest
+
+  post_build:
+    commands:
+      - echo creating package
+      - mkdir buildoutput
+      - pip install -r source/requirements.txt  -t custom_chainer
+      - cd source && zip -r ../buildoutput/sentimentanalysis_chainer.zip . && cd ..
+
+
+artifacts:
+  files:
+    - '**/*'
+  base-directory: buildoutput
