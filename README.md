@@ -4,7 +4,7 @@ Demos Sentiment analysis using comprehend batch, document and asynchronous mode
 ## Prerequisites
 1. Python 3.5+, https://www.python.org/downloads/release/python-350/ 
 2. Install pip, see https://pip.pypa.io/en/stable/installing/ 
-3. Install libraries
+3. Install dependcies for this project
 ```bash
 pip install -r source/requirements.txt
 ``` 
