@@ -14,5 +14,5 @@ python source/demo.py single "This is great! and amazing"
 ### Batch doc mode
 ```bash
 export PYTHONPATH=./source
-python source/demo.py batch tests/data/sample_reviews.csv
+python source/demo.py batch tests/data/sample_reviews.csv --outfile /tmp/sentiment.csv
 ```

@@ -1,4 +1,5 @@
 import argparse
+import csv
 import pprint
 
 from comprehendApi import ComprehendApi
@@ -7,7 +8,26 @@ MODE_SINGLE = 'single'
 MODE_BATCH = 'batch'
 
 
+def write_result(result, outfile=None):
+
+    if outfile is None:
+        return
+
+    with open(outfile, "w") as f:
+        csv_writer = csv.writer(f, delimiter=",", quotechar='"')
+        for l in result:
+            csv_writer.writerow(l)
+
+    print("The results have been saved to {}".format(outfile))
+
+
 def run_demo(mode, input, outfile=None):
+    """
+Runs a sample demo
+    :param mode: Mode is either single or batcn
+    :param input: The input a text or a file for batch
+    :param outfile:
+    """
     api = ComprehendApi()
     result = None
 
@@ -22,8 +42,11 @@ def run_demo(mode, input, outfile=None):
                 input_list.append(line)
         result = api.get_sentiment_batch(input_list)
 
+
+
     pp = pprint.PrettyPrinter(indent=4)
     pp.pprint(result)
+    write_result(result, outfile)
 
 
 if __name__ == '__main__':
