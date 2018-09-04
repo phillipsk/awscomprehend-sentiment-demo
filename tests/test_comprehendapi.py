@@ -4,7 +4,7 @@ from source.comprehendApi import ComprehendApi
 
 
 class TestComprehendapi(TestCase):
-    def test_single(self):
+    def test_get_sentiment_singledoc(self):
         # Arrange
         sut = ComprehendApi()
 
@@ -15,3 +15,16 @@ class TestComprehendapi(TestCase):
         # Assert
         self.assertEqual(actual_sentiment.lower(), expected_sentiment)
         self.assertGreater(confidence_score, 0)
+
+    def test_get_sentiment_batch(self):
+        # Arrange
+        sut = ComprehendApi()
+        data = ["This is bad"
+            , "This is good"]
+
+        # Act
+        actual = sut.get_sentiment_batch(data)
+
+        # Assert
+        self.assertEqual(len(data), len(actual))
+
