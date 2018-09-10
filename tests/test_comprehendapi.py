@@ -28,40 +28,25 @@ class TestComprehendapi(TestCase):
 
     def test_get_sentiment_batch_bulk(self):
         # Arrange
-        data = ["This is bad"
-            , "This is good"]
+        data = ["{} . This is good".format(r) for r in range(0, 50)]
+
         mock_client = MagicMock()
 
-        # Response looks like this for batch sentiment
 
-        mock_client.batch_detect_sentiment.return_value =  {
-            'ResultList': [
-                {
-                    'Index': 1,
-                    'Sentiment': 'POSITIVE' ,
+        # Response looks like this for batch sentiment
+        mock_client.batch_detect_sentiment.side_effect = lambda  TextList, LanguageCode:  {
+                'ResultList': [{
+                    'Index': r,
+                    'Sentiment': 'POSITIVE',
                     'SentimentScore': {
                         'Positive': 1.0,
                         'Negative': 0.0,
                         'Neutral': 0.0,
                         'Mixed': 0.0
                     }
-                },
-                {
-                    'Index': 0,
-                    'Sentiment': 'NEGATIVE',
-                    'SentimentScore': {
-                        'Positive': 0.1,
-                        'Negative': .8,
-                        'Neutral': 0.1,
-                        'Mixed': 0.0
-                    }
-                },
-            ],
-            'ErrorList': [
-
-            ]
-        }
-
+                } for r in range(0, len(TextList))],
+                'ErrorList': []
+            }
 
         sut = ComprehendApi(mock_client)
 
