@@ -34,10 +34,11 @@ phases:
   post_build:
     commands:
       - echo creating package
+      - echo $CODEBUILD_SRC_DIR
     ## This is optional, packaging the solution without docker
-      - mkdir buildoutput
-      - pip install -r  ~/source/requirements.txt  -t  ~/source
-      - cd ~/source && zip -r ../buildoutput/comprehend_sentiment_demo.zip . && cd ..
+      - mkdir $CODEBUILD_SRC_DIR/buildoutput
+      - pip install -r  $CODEBUILD_SRC_DIR/source/requirements.txt  -t  $CODEBUILD_SRC_DIR/source
+      - cd $CODEBUILD_SRC_DIR/source && zip -r ../buildoutput/comprehend_sentiment_demo.zip .
     # Login to to ECR, this means code build has this role
       - echo Logging in to Amazon ECR...
       - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)

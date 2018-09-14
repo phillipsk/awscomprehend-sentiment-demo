@@ -1,0 +1,55 @@
+{
+    "jobDefinitionName": "SingleDocumentSentimentAnalysis",
+    "type": "container",
+    "parameters": {
+        "KeyName": ""
+    },
+    "containerProperties": {
+        "image": "",
+        "vcpus": 1,
+        "memory": 2,
+        "command": [
+            "Ref::mode",
+            "Ref::sentence"
+
+        ],
+        "jobRoleArn": "",
+        "volumes": [
+            {
+                "host": {
+                    "sourcePath": ""
+                },
+                "name": ""
+            }
+        ],
+        "environment": [
+            {
+                "name": "",
+                "value": ""
+            }
+        ],
+        "mountPoints": [
+            {
+                "containerPath": "",
+                "readOnly": true,
+                "sourceVolume": ""
+            }
+        ],
+        "readonlyRootFilesystem": true,
+        "privileged": true,
+        "ulimits": [
+            {
+                "hardLimit": 0,
+                "name": "",
+                "softLimit": 0
+            }
+        ],
+        "user": ""
+    },
+    "retryStrategy": {
+        "attempts": 0
+    },
+    "timeout": {
+        "attemptDurationSeconds": 0
+    }
+}
