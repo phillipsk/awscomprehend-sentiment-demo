@@ -12,6 +12,7 @@ phases:
 
   build:
     commands:
+      # Run Tests
       - pip install -r source/requirements.txt
       - pyflakes ./**/*.py
       - export PYTHONPATH=./source
