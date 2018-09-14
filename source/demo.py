@@ -23,7 +23,7 @@ def write_result(result, outfile=None, encoding="utf-8"):
 def run_demo(mode, input, outfile=None, max_threads=1, encoding="utf-8"):
     """
 Runs a sample demo
-    :param mode: Mode is either single or batcn
+    :param mode: Mode is either single or batch
     :param input: The input a text or a file for batch
     :param outfile:
     """
