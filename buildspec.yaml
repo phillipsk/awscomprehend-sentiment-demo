@@ -35,7 +35,7 @@ phases:
       - echo creating package
     ## This is optional, packaging the soltuion without docker
       - mkdir buildoutput
-      - pip install -r source/requirements.txt  -t custom_chainer
+      - pip install -r source/requirements.txt  -t source
       - cd source && zip -r ../buildoutput/comprehend_sentiment_demo.zip . && cd ..
     # Login to to ECR, this means code build has this role
       - echo Logging in to Amazon ECR...
