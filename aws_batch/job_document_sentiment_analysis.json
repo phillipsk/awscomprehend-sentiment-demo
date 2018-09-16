@@ -1,0 +1,55 @@
+{
+  "jobDefinitionName": "DocumentSentimentAnalysis",
+  "type": "container",
+  "parameters": {
+    "mode": "single",
+    "text": "This is awesome"
+  },
+  "containerProperties": {
+    "image": "",
+    "vcpus": 1,
+    "memory": 2000,
+    "command": [
+      "Ref::mode",
+      "Ref::text"
+    ],
+    "jobRoleArn": "",
+    "volumes": [
+      {
+        "host": {
+          "sourcePath": "DocumentSentimentAnalysisdata"
+        },
+        "name": "data"
+      }
+    ],
+    "environment": [
+      {
+        "name": "",
+        "value": ""
+      }
+    ],
+    "mountPoints": [
+      {
+        "containerPath": "/data",
+        "readOnly": false,
+        "sourceVolume": "data"
+      }
+    ],
+    "readonlyRootFilesystem": true,
+    "privileged": true,
+    "ulimits": [
+      {
+        "hardLimit": 0,
+        "name": "",
+        "softLimit": 0
+      }
+    ],
+    "user": ""
+  },
+  "retryStrategy": {
+    "attempts": 0
+  },
+  "timeout": {
+    "attemptDurationSeconds": 0
+  }
+}
