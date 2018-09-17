@@ -6,7 +6,7 @@
     "text": "This is awesome"
   },
   "containerProperties": {
-    "image": "",
+    "image": "324346001917.dkr.ecr.us-east-2.amazonaws.com/awscomprehend-sentiment-demo",
     "vcpus": 1,
     "memory": 2000,
     "command": [
@@ -22,12 +22,7 @@
         "name": "data"
       }
     ],
-    "environment": [
-      {
-        "name": "",
-        "value": ""
-      }
-    ],
+    "environment": [ ],
     "mountPoints": [
       {
         "containerPath": "/data",
@@ -37,19 +32,11 @@
     ],
     "readonlyRootFilesystem": true,
     "privileged": true,
-    "ulimits": [
-      {
-        "hardLimit": 0,
-        "name": "",
-        "softLimit": 0
-      }
-    ],
+    "ulimits": [ ],
     "user": ""
   },
   "retryStrategy": {
-    "attempts": 0
-  },
-  "timeout": {
-    "attemptDurationSeconds": 0
+    "attempts": 1
   }
+
 }

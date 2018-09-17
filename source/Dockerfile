@@ -12,7 +12,7 @@ RUN pip install  awscli --upgrade
 
 #Set up working directory
 WORKDIR ${source_path}
-ENTRYPOINT  ["python", "${source_path}/demo.py"]
+ENTRYPOINT  ["python", "demo.py"]
 
 #Default arguments to run test
 CMD ["single", "This is great! and amazing"]
