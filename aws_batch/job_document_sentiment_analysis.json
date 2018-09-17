@@ -6,7 +6,7 @@
     "text": "This is awesome"
   },
   "containerProperties": {
-    "image": "324346001917.dkr.ecr.us-east-2.amazonaws.com/awscomprehend-sentiment-demo",
+    "image": "",
     "vcpus": 1,
     "memory": 2000,
     "command": [
