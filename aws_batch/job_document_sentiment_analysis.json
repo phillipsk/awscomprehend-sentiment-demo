@@ -13,7 +13,7 @@
       "Ref::mode",
       "Ref::text"
     ],
-    "jobRoleArn": "",
+    "jobRoleArn": "arn:aws:iam::324346001917:role/Batch",
     "volumes": [
       {
         "host": {
@@ -22,7 +22,12 @@
         "name": "data"
       }
     ],
-    "environment": [ ],
+    "environment": [
+      {
+        "name": "AWS_DEFAULT_REGION",
+        "value": "us-east-2"
+      }
+    ],
     "mountPoints": [
       {
         "containerPath": "/data",
@@ -32,11 +37,10 @@
     ],
     "readonlyRootFilesystem": true,
     "privileged": true,
-    "ulimits": [ ],
+    "ulimits": [],
     "user": ""
   },
   "retryStrategy": {
     "attempts": 1
   }
-
 }
