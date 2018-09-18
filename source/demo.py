@@ -72,6 +72,10 @@ if __name__ == '__main__':
     parser.add_argument("--encoding",
                         help="This is relevant only for {} mode. The number of threads used to process the requests".format(
                             MODE_BATCH), type=str, default="utf-8")
+
+    #TODO Fix this , set up debug
+    parser.add_argument("--debuglevel",
+                        help="This is the debug leevel", type=str, default="info")
     args = parser.parse_args()
 
     run_demo(args.mode, args.input, args.outfile, args.max_threads, args.encoding)
