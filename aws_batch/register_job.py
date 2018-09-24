@@ -19,7 +19,8 @@ class RegisterJob:
             "type": "container",
             "parameters": {
                 "mode": "single",
-                "text": "This is awesome"
+                "text": "This is awesome",
+                "loglevel": "--loglevel INFO"
             },
             "containerProperties": {
                 "image": container_name,
@@ -28,6 +29,7 @@ class RegisterJob:
                 "command": [
                     "Ref::mode",
                     "Ref::text"
+                    "Ref::loglevel"
                 ],
                 "jobRoleArn": "arn:aws:iam::{}:role/Batch".format(account_id),
                 "volumes": [
