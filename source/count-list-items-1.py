@@ -4,13 +4,11 @@
 import sys
 import source.classifiers as classifiers
 
-filename = "../TXT_asrOutput.txt"
-with open(filename, 'r') as f:
-    read_data = f.read()
 
-wordstring = read_data
 
-wordlist = wordstring.split()
+# wordstring = read_data
+
+# wordlist = wordstring.split()
 #
 # wordfreq = []
 # for w in wordlist:
@@ -18,7 +16,8 @@ wordlist = wordstring.split()
 #
 
 # one liner
-wordfreq = [wordlist.count(w) for w in wordlist] # a list comprehension
+# wordfreq = [wordlist.count(w) for w in wordlist]  # a list comprehension
+
 
 # print("String\n" + wordstring +"\n")
 # print("List\n" + str(wordlist) + "\n")
@@ -30,7 +29,8 @@ wordfreq = [wordlist.count(w) for w in wordlist] # a list comprehension
 
 def wordListToFreqDict(wordlist):
     wordfreq = [wordlist.count(p) for p in wordlist]
-    return dict(list(zip(wordlist,wordfreq)))
+    return dict(list(zip(wordlist, wordfreq)))
+
 
 # Sort a dictionary of word-frequency pairs in
 # order of descending frequency.
@@ -40,6 +40,7 @@ def sortFreqDict(freqdict):
     aux.sort()
     aux.reverse()
     return aux
+
 
 # Given a list of words, remove any that are
 # in a list of stop words.
@@ -61,7 +62,12 @@ def removeStopwords(wordlist, stopwords):
 
 
 def run_demo():
-    fullwordlist = read_data
+    filename = "../TXT_asrOutput.txt"
+    with open(filename, 'r') as f:
+        read_data = f.read()
+
+    fullwordlist = read_data.split()
+
     wordlist = removeStopwords(fullwordlist, classifiers.stopwords)
     dictionary = wordListToFreqDict(wordlist)
     sorteddict = sortFreqDict(dictionary)
