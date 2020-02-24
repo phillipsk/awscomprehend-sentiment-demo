@@ -16,7 +16,7 @@ def write_result(result, outfile=None, encoding="utf-8"):
         return
 
     with open(outfile, "w", encoding=encoding) as f:
-        csv_writer = csv.writer(f, delimiter="|", quotechar='"')
+        csv_writer = csv.writer(f, delimiter=",", quotechar='"')
         for l in result:
             csv_writer.writerow(l)
 
@@ -60,7 +60,7 @@ def run_batch_demo(input, encoding, max_threads, aws_service):
 
 
 if __name__ == '__main__':
-    run_demo("batch", "phrases", "../TXT_asrOutput.txt", "../keyPhrases.csv", 3)
+    run_demo("batch", "sent", "../TXT_asrOutput.txt", "../sentiment90.csv", 3)
 
 #     mode = [MODE_SINGLE, MODE_BATCH]
 #     parser = argparse.ArgumentParser()

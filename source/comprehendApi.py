@@ -71,8 +71,8 @@ Obtains sentiment for a batch of documents. Comprehend api only accepts 25  docu
                 text = list_of_doc[input_index]
                 sentiment = r["Sentiment"]
                 confidence_score = r["SentimentScore"][sentiment.title()]
-
-                result.append((text, sentiment, confidence_score))
+                if sentiment == 'POSITIVE' and confidence_score > .90:
+                    result.append((text, sentiment, confidence_score))
             return result
         elif self.aws_service in 'det_phrases':
             response = self.client.batch_detect_key_phrases(TextList=list_of_doc, LanguageCode=language_code)
